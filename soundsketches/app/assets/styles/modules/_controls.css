@@ -1,0 +1,13 @@
+.controls {
+display: flex;
+flex-direction: column;
+width: 100%;
+
+flex-wrap: wrap;
+  input {
+    margin-bottom: 0.5rem;
+  }
+  label {
+    margin-right: 20px;
+  }
+}
