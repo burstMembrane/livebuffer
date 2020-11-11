@@ -28,9 +28,7 @@ class AudioSource {
   setLoopStart(value) {
     this.source.loopStart = value;
   }
-  setDetune(value) {
-    this.source.detune.value = value;
-  }
+  setDetune(value) {}
 
   stopPreview() {
     this.source && this.gain.disconnect(this.audioCtx.destination);

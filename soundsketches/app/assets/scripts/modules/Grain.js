@@ -9,10 +9,8 @@ class Grain {
   }
   play() {
     this.gain.gain.value = 1;
-
     this.source.loop = true;
     this.source.start(0);
-
     this.source.connect(this.gain);
     this.gain.connect(this.audioContext.destination);
   }

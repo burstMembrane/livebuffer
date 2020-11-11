@@ -22,8 +22,8 @@ let pages = fse
 // copy images to dist folder after build
 class RunAfterCompile {
   apply(compiler) {
-    compiler.hooks.done.tap("Copy Images", () => {
-      fse.copySync("./app/assets/images", "./docs/assets/images");
+    compiler.hooks.done.tap("Copy Sounds", () => {
+      fse.copySync("./app/assets/sounds", "./dist/assets/sounds");
     });
   }
 }

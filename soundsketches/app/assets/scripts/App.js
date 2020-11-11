@@ -1,5 +1,6 @@
 //! import styles
 import "../styles/styles.css";
+import regeneratorRuntime from "regenerator-runtime";
 
 import Recorder from "./modules/Recorder";
 import Analyzer from "./modules/Analyzer";
