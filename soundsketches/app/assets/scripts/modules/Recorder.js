@@ -174,7 +174,7 @@ class Recorder {
         .then((arrayBuffer) => audioCtx.decodeAudioData(arrayBuffer));
     };
     this.reverbGain = this.audioCtx.createGain();
-    this.reverbGain.gain.value = 0.5;
+
     this.convolver = this.audioCtx.createConvolver();
     const buf = util.create(1000);
     this.noiseBuffer = util.noise(buf);
@@ -184,9 +184,7 @@ class Recorder {
       reverbImpulse
     );
 
-    this.sources.forEach((source) => {
-      source.connect(this.reverbGain);
-    });
+    this.masterBus.connect(this.reverbGain);
     this.reverbGain.connect(this.convolver).connect(this.audioCtx.destination);
   }
 
@@ -203,7 +201,7 @@ class Recorder {
   }
 
   stopPreview() {
-    this.source && this.gain.disconnect(this.audioCtx.destination);
+    this.sources && this.masterBus.disconnect(this.audioCtx.destination);
   }
 }
 

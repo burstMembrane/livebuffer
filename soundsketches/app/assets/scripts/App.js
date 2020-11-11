@@ -19,7 +19,7 @@ const sourcesInput = document.querySelector(".sources");
 const detuneSlider = document.querySelector(".detune");
 const volumeInput = document.querySelector(".volume");
 const reverbVolume = document.querySelector(".reverbvolume");
-const normalizeButton = document.querySelector(".normalize");
+// const normalizeButton = document.querySelector(".normalize");
 const reverbCheckbox = document.querySelector(".reverb");
 // DISABLE UI BUTTONS -- PLAY & STOP
 playButton.classList.add("disabled");
@@ -37,7 +37,8 @@ const analyzer = document.querySelector("#analyzer");
 
 let length = timeInput.value;
 let numSources = sourcesInput.value;
-// Setup recorder object as global (this would change in production)
+
+// Setup class objects as global (this would change in production)
 let r;
 let a;
 let g;
@@ -45,12 +46,13 @@ let g;
 //  BUTTON EVENT LISTENERS
 recordButton.addEventListener("click", () => {
   recordButton.classList.add("red");
-
+  // instantiate new Recorder class
   r = new Recorder(length, numSources);
+
+  // if there is a stream, start recording
   r.stream && r.recordChunks();
 
-  console.log(g);
-  console.log(r.wavesurfer);
+  //  after specified time, stop recording
   setTimeout(() => {
     recordButton.classList.remove("red");
     playButton.classList.remove("disabled");
@@ -60,17 +62,20 @@ recordButton.addEventListener("click", () => {
     document
       .querySelectorAll("input[type=range]")
       .forEach((input) => (input.disabled = false));
-    g = new Grain(r.arrayBuffer, r.audioCtx, r.audioCtx.destination, 1.0);
+    // g = new Grain(r.arrayBuffer, r.audioCtx, r.audioCtx.destination, 1.0);
   }, length);
 });
 
 playButton.addEventListener("click", () => {
-  console.log(g);
+  // playing back
   stopButton.classList.remove("blue");
   recordButton.classList.remove("red");
-  a = new Analyzer(analyzer, r.audioCtx, r.sources[0]);
+
+  // play previews
   r && r.playPreview();
-  //g.play();
+
+  // start Analyzer
+  a = new Analyzer(analyzer, r.audioCtx, r.sources[0]);
   a && a.render();
   playButton.classList.add("green");
 });
@@ -135,7 +140,7 @@ loopStartSlider.addEventListener("input", (e) => {
   }
 });
 reverbCheckbox.onclick = () => r && r.reverb(reverbCheckbox.checked);
-normalizeButton.onclick = () => r && r.normalizeBuffer();
+// normalizeButton.onclick = () => r && r.normalizeBuffer();
 
 // ! allow hot reloading of the files in project
 if (module.hot) {
