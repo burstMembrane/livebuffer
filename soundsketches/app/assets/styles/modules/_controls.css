@@ -10,4 +10,7 @@ flex-wrap: wrap;
   label {
     margin-right: 20px;
   }
+button{
+  margin-top: 10px;
+}
 }

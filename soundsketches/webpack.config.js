@@ -47,7 +47,7 @@ let config = {
     rules: [
       cssConfig,
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|m4a|wav)$/,
         use: ["file-loader"],
       },
     ],

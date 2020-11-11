@@ -30,13 +30,24 @@ body {
   align-items: center;
   justify-content: center;
 }
-canvas {
-  margin: 10px;
-  width: 600px;
-  height: auto;
-  border: 1px solid black;
+#analyzer {
+  margin: 10px 0;
+  width: 100%;
+
+  
 }
 .hide {
   display: none;
   opacity: 0;
+}
+
+
+#waveform{
+ 
+  outline: none;
+border: none;
+min-width: 100%;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
 }
